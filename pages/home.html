@@ -1,0 +1,59 @@
+<%- include('partials/header.html');%>
+<main>
+	<section class="noticia-destaque">
+		<div class="container">
+			<div class="img-destaque">
+				<div class="overlay"></div>
+				<div class="title-destaque-descricao">
+					<h2><a href="/<%= posts[0].slug; %>"><%= posts[0].titulo; %></a></h2>
+					<p><%- posts[0].descricaoCurta; %>...</p>
+				</div>
+				<img src="<%= posts[0].imagem; %>"/>
+			</div>
+		</div>
+	</section>
+
+	<section class="outras-noticias">
+		<div class="title-outras noticias">
+			<h2>Últimas Notícias</h2>
+		</div>
+		<div class="container">
+
+			<div class="ultimas">
+				<% for(let i=1; i<posts.length; i++){ %>
+				<div class="box-ultima-single">
+					<img src="<%= posts[i].imagem; %>"/>
+					<div class="conteudo-noticia-single">
+						<h3><%= posts[i].categoria; %></h3>
+						<h2><%= posts[i].titulo; %></h2>
+						<p><%- posts[i].descricaoCurta; %>...</p>
+						<a href="/<%= posts[i].slug; %>">Saiba Mais</a>
+					</div>
+				</div>
+				<% }%>
+				
+			</div>
+
+			<div class="mais-lidas">
+				<h3>Mais Lidas</h3>
+				<div class="mais-lidas-noticias">
+					
+				<% for(let i=0; i<posts_top.length; i++){ %>
+					<div class="mais-lida-noticia-single">
+						<img src="<%= posts_top[i].imagem; %>"/>
+						<div class="texto-mais-lida-noticia-single">
+							<h4><%= posts_top[i].categoria; %></h4>
+							<p><%- posts_top[i].descricaoCurta; %></p>
+							<p><b>Views <%= posts_top[i].views; %></b></p>
+							<a href="/<%= posts_top[i].slug; %>">Saiba Mais</a>
+						</div>
+					</div>
+				<% }%>
+				</div>
+			</div>
+
+		</div>
+	</section>
+</main>
+<%- include("partials/footer.html"); %>
+
